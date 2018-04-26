@@ -148,7 +148,10 @@ module.exports = {
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/
               // directory for faster rebuilds.
-              cacheDirectory: true,
+              cacheDirectory: true,           
+              "plugins": [
+                ["import", { libraryName: "antd-mobile", style: "css" }] // `style: true` 会加载 less 文件
+              ]           
             },
           },
           // "postcss" loader applies autoprefixer to our CSS.
@@ -157,11 +160,17 @@ module.exports = {
           // In production, we use a plugin to extract that CSS to a file, but
           // in development "style" loader enables hot editing of CSS.
           {
-            test: /\.css$/,
+            test: /\.(css|less)$/,
             use: [
               require.resolve('style-loader'),
               {
                 loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                },
+              },
+              {
+                loader: require.resolve('less-loader'),
                 options: {
                   importLoaders: 1,
                 },

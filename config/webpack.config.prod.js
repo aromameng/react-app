@@ -148,9 +148,11 @@ module.exports = {
             test: /\.(js|jsx|mjs)$/,
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
-            options: {
-              
+            options: {             
               compact: true,
+              "plugins": [
+                ["import", { libraryName: "antd-mobile", style: "css" }] // `style: true` 会加载 less 文件
+              ]  
             },
           },
           // The notation here is somewhat confusing.
@@ -166,7 +168,7 @@ module.exports = {
           // use the "style" loader inside the async code so CSS from them won't be
           // in the main CSS file.
           {
-            test: /\.css$/,
+            test: /\.(css|less)$/,
             loader: ExtractTextPlugin.extract(
               Object.assign(
                 {
@@ -179,6 +181,14 @@ module.exports = {
                   use: [
                     {
                       loader: require.resolve('css-loader'),
+                      options: {
+                        importLoaders: 1,
+                        minimize: true,
+                        sourceMap: shouldUseSourceMap,
+                      },
+                    },
+                    {
+                      loader: require.resolve('less-loader'),
                       options: {
                         importLoaders: 1,
                         minimize: true,
