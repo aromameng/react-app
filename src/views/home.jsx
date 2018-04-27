@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 class Home extends Component{
   componentWillMount(){
-    console.log(this.props)
+    // console.log(this.props)
   }
   render() {
     return (

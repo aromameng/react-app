@@ -11,6 +11,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+const pxtorem = require('postcss-pxtorem')
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -192,7 +193,8 @@ module.exports = {
                       ],
                       flexbox: 'no-2009',
                     }),
-                  ],
+                    pxtorem({ rootValue: 100, propWhiteList: [] })
+                  ],        
                 },
               },
             ],
@@ -212,6 +214,14 @@ module.exports = {
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
+          },
+          {
+            test: /\.(svg)$/i,
+            loader: 'svg-sprite-loader',
+            include: [
+                require.resolve('antd-mobile').replace(/warn\.js$/, ''),  // 1. svg files of antd-mobile
+                path.resolve(__dirname, '../src/'),  // folder of svg files in your project
+            ]
           },
         ],
       },

@@ -1,5 +1,75 @@
-.cp-header{
-  height: 50px;
-  line-height: 50px;
+.cp_header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 44px;
+  line-height: 44px;  
+  font-size: 14px;
   text-align: center;
+  background-color: #e32600;
+  color: #fff;
+  .head_back{
+    vertical-align: middle;
+    height: 44px;
+    position: absolute;
+    left: 0;
+  }
+}
+
+.cp_footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background: #fff;
+  padding: 3px 0;
+  height: 50px;
+  .menu_list{
+    flex: 1;
+    .text{
+      display: block;
+      text-align: center;
+    }
+    &.active{
+      color: #e32600;
+    }
+  }
+  .cp_icon{
+    width: 24px;
+    height: 24px;
+  }
+  .icon_home{
+    background: url('../assets/img/icon_home.png') no-repeat;
+    background-size:100%; 
+  }
+  .icon_home_active{
+    background: url('../assets/img/icon_home_active.png') no-repeat;
+    background-size:100%; 
+  }
+  .icon_classify{
+    background: url('../assets/img/icon_classify.png') no-repeat;
+    background-size:100%; 
+  }
+  .icon_classify_active{
+    background: url('../assets/img/icon_classify_active.png') no-repeat;
+    background-size:100%; 
+  }
+  .icon_shop{
+    background: url('../assets/img/icon_shop_cart.png') no-repeat;
+    background-size:100%; 
+  }
+  .icon_shop_active{
+    background: url('../assets/img/icon_shop_cart_active.png') no-repeat;
+    background-size:100%; 
+  }
+  .icon_my{
+    background: url('../assets/img/icon_info.png') no-repeat;
+    background-size:100%; 
+  }
+  .icon_my_active{
+    background: url('../assets/img/icon_info_active.png') no-repeat;
+    background-size:100%; 
+  }
 }

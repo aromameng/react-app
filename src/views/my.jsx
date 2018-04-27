@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 class News extends Component{
   componentWillMount(){
-    console.log(this.props)
+    // console.log(this.props)
   }
   goPage() {
     this.props.history.push('/about')

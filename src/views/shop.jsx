@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import '../App.css';
-import logo from '../logo.svg';
+import logo from '../assets/img/logo.svg';
 
 class About extends Component{
   componentWillMount(){
-    console.log(this.props)
+    // console.log(this.props)
   }
   render() {
     return (
