@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import './game.less'
+// import './game.less'
+import Footer from '../components/Footer'
+import ShopTab from '../components/ShopTab'
+import './shop.less'
 
 class Block extends Component{
   render(){
@@ -18,8 +21,9 @@ class News extends Component{
   }
   render() {
     return (
-      <div>
-        <Block />       
+      <div className='view_classify'>
+        <ShopTab />   
+        <Footer {...this.props} />    
       </div>
     )
   }

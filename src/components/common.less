@@ -1,0 +1,73 @@
+@import '../assets/css/reset.less';
+
+.view_shop{
+  &.empty{
+    display: flex;
+    padding-top: 100px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: @gray;
+    .pic{
+      display: inline-block;
+      width: 30%;
+      height: auto;
+    }
+    .btn{
+      padding: 0 30px;
+      background: @primary;
+    }
+  }
+}
+
+.cp_shopTab{
+  display: flex;
+  overflow-y: hidden;
+  height: 100%;
+  .tab{
+    width: 80px;
+    text-align: center;
+    height: 100%;
+    overflow-y: auto;
+    background: #eee;
+    .tab_item{
+      display: block;
+      line-height: 50px;
+      background: #eee;
+      color: #666;
+      &.active{
+        background: #fff;
+        color: @primary;
+      }
+    }
+  }
+  .content{
+    flex: 1;
+    background: #fff;
+    overflow-y: auto;
+    height: 100%;
+    padding: 0 10px;
+    .pro_type{
+      line-height: 50px;
+      .all{
+        float: right;
+        color: @gray;
+      }
+    }
+    .pro_box{
+      display: table;
+    }
+    .pro_item{
+      width: 33%;
+      display: table-cell;
+      text-align: center;
+    }
+    .pro_tilte{
+      display: block;
+    }
+    .pro_pic{
+      width: 60px;
+      height: 60px;
+    }
+  }
+}

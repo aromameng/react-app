@@ -4,7 +4,7 @@ import './header.less'
 
 class News extends Component{
   componentWillMount(){
-    console.log(this.props)
+    // console.log(this.props)
   }
   goPage() {
     this.props.history.push('/about')
