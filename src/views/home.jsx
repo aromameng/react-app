@@ -12,7 +12,7 @@ class Home extends Component{
     return (
       <div className="App">
         <Button>加油</Button>
-        <Link to='/about'>关于</Link>
+        <Link to='/my'>我的</Link>
       </div>
     )
   }
