@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-// import { Icon } from 'antd-mobile';
 import './header.less'
 
-class News extends Component{
+class Footer extends Component{
   constructor(){
     super()
     this.handleNav = this.handleNav.bind(this)
@@ -22,11 +21,11 @@ class News extends Component{
         link:'/classify',
         active:false
       },{
-        name:'shop',
+        name:'shopcart',
         title:'购物车',
         icon:'icon_shop',
         active_icon:'icon_shop_active',
-        link:'/shop',
+        link:'/shopcart',
         active:false
       },{
         name:'my',
@@ -41,18 +40,23 @@ class News extends Component{
   }
 
   componentWillMount(){
-    console.log(this.props)
+    const curRoute = this.props.route,
+          menu = this.state.menu
+    if(!curRoute.meta.foot) this.setState({ isShow : false })
+    menu.forEach((item,index) => {
+      item.active = false
+      if(item.name === curRoute.name){
+        item.active = true      
+      }
+    })
+    this.setState({
+      menu : menu
+    })
   }
   
   handleNav(e,index) {   
     const menu = this.state.menu
-    menu.map(item=>item.active=false)
-    menu[index].active = true
-    this.setState({
-      menu : menu
-    },()=>{
-      this.props.history.push(menu[index].link)
-    })
+    this.props.history.push(menu[index].link)
   }
   render() {
     const {menu} = this.state
@@ -74,4 +78,4 @@ class News extends Component{
   }
 }
 
-export default News;
+export default Footer;

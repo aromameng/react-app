@@ -10,6 +10,11 @@ body, html {
   height: 100%;
   background-color: #f4f4f4;
 }
+ul,li{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 #root{
   position: relative;
   height: 100%;
@@ -27,4 +32,6 @@ body, html {
 }
 .view_content{
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }

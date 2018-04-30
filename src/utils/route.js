@@ -47,9 +47,9 @@ export default {
       foot: true
     }
   },
-  "shop": {
-    name:'shop',
-    link:'/shop',
+  "shopcart": {
+    name:'shopcart',
+    link:'/shopcart',
     meta:{
       back: false,
       foot: true

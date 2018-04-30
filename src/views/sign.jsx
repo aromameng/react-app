@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Sign extends Component{
   componentWillMount(){
-    console.log('------',this.props)
+    // console.log('------',this.props)
   }
   render() {
     return (
