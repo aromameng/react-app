@@ -16,6 +16,9 @@
     .btn{
       padding: 0 30px;
       background: @primary;
+      font-size: 16px;
+      height: 40px;
+      line-height:40px;
     }
   }
 }
@@ -55,19 +58,58 @@
       }
     }
     .pro_box{
-      display: table;
+      position: relative;
     }
     .pro_item{
       width: 33%;
-      display: table-cell;
+      display: inline-block;
       text-align: center;
+      padding-top: 10px;
     }
     .pro_tilte{
       display: block;
+      line-height: 30px;
     }
     .pro_pic{
       width: 60px;
       height: 60px;
     }
+  }
+}
+
+.home_nav{
+  display: table;
+  width: 100%;
+  padding: 10px 0 5px;
+  .cp_icon{
+    width: 50px;
+    height: 50px;
+  }
+  .nav_item{
+    width: 25%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: #666;
+    .title{
+      display: block;
+      line-height: 40px;
+    }
+  }
+  .icon_nav_1{
+    background: url('../assets/img/icon_nav_01_new.png') no-repeat;
+    background-size:100%; 
+  }
+  .icon_nav_2{
+    background: url('../assets/img/icon_nav_02_new.png') no-repeat;
+    background-size:100%; 
+  }
+  .icon_nav_3{
+    background: url('../assets/img/icon_nav_03_new.png') no-repeat;
+    background-size:100%; 
+  }
+  .icon_nav_4{
+    background: url('../assets/img/icon_nav_04_new.png') no-repeat;
+    background-size:100%; 
   }
 }

@@ -4,14 +4,19 @@ import { Link } from 'react-router-dom'
 import './common.less'
 
 class ShopTab extends Component{
-  constructor(){
+  constructor(props){
     super()
     this.state = {
       active: 0
     }
+    this.len = props.list.length
   }  
 
   tabHeight = 0
+  contentHeight = 0
+  tabList = []
+  winHeight = document.body.clientHeight
+  isTab = false
 
   componentWillMount(){
     // console.log(this.props)
@@ -19,140 +24,45 @@ class ShopTab extends Component{
 
   componentDidMount(){
     this.tabHeight = this.refs.tab.clientHeight
-    console.log(this.tabHeight)
+    this.contentHeight = this.refs.content.scrollHeight
+    let $tab = this.refs.content.querySelectorAll('.tab_item')
+    let sum = 0
+    Array.from($tab).forEach((item)=>{
+      this.tabList.push(sum)
+      sum += item.clientHeight
+    })
+    // console.log(this.tabList)
   }
 
   goPage() {
     this.props.history.push('/about')
   }
 
-  handleClickTab(e,index){
+  handleClickTab(e,item,index){
     this.setState({
       active : index
     })
+    this.refs.content.scrollTop = this.tabList[index]
+    this.isTab = true
   }
 
   handleConScroll(e){
+    
+    if(this.isTab) return this.isTab = false
     let scrollTop = e.target.scrollTop
+    for(var [index,item] of this.tabList.entries()){     
+      if(scrollTop - 100 <= item){
+        this.setState({
+          active : index
+        })
+        return
+      }
+    }
+    // console.log(scrollTop)
   }
 
   render() {
-    const list =[{
-      name: 'dress',
-      title: '服饰',
-      id: '001',
-      typeId: 'dress',
-      url: '',
-      children:[{
-        name: 'dress',
-        title: '女装',
-        pic:'http://img0.imgtn.bdimg.com/it/u=3609377622,3839737162&fm=27&gp=0.jpg',
-        url: ''
-      },{
-        name: 'dress',
-        title: '男装',
-        pic:'http://img0.imgtn.bdimg.com/it/u=3609377622,3839737162&fm=27&gp=0.jpg',
-        url: ''
-      }]
-    },{
-      name: 'shoes',
-      title: '鞋包',
-      url: '',
-      typeId: 'shoes',
-      id: '002',
-      children:[{
-        name: 'dress',
-        title: '夏上新',
-        pic:'http://img0.imgtn.bdimg.com/it/u=3609377622,3839737162&fm=27&gp=0.jpg',
-        url: ''
-      },{
-        name: 'dress',
-        title: '女鞋',
-        pic:'http://img0.imgtn.bdimg.com/it/u=3609377622,3839737162&fm=27&gp=0.jpg',
-        url: ''
-      }]
-    },{
-      name: 'baby',
-      title: '母婴',
-      typeId: 'baby',
-      url: '',
-      id: '003',
-      children:[{
-        name: 'dress',
-        title: '童装',
-        pic:'http://img0.imgtn.bdimg.com/it/u=3609377622,3839737162&fm=27&gp=0.jpg',
-        url: ''
-      },{
-        name: 'dress',
-        title: '童鞋',
-        pic:'http://img0.imgtn.bdimg.com/it/u=3609377622,3839737162&fm=27&gp=0.jpg',
-        url: ''
-      }]
-    },{
-      name: 'baby',
-      title: '母婴',
-      url: '',
-      id: '004',
-      children:[{
-        name: 'dress',
-        title: '童装',
-        pic:'http://img0.imgtn.bdimg.com/it/u=3609377622,3839737162&fm=27&gp=0.jpg',
-        url: ''
-      },{
-        name: 'dress',
-        title: '童鞋',
-        pic:'http://img0.imgtn.bdimg.com/it/u=3609377622,3839737162&fm=27&gp=0.jpg',
-        url: ''
-      }]
-    },{
-      name: 'baby',
-      title: '母婴',
-      url: '',
-      id: '005',
-      children:[{
-        name: 'dress',
-        title: '童装',
-        pic:'http://img0.imgtn.bdimg.com/it/u=3609377622,3839737162&fm=27&gp=0.jpg',
-        url: ''
-      },{
-        name: 'dress',
-        title: '童鞋',
-        pic:'http://img0.imgtn.bdimg.com/it/u=3609377622,3839737162&fm=27&gp=0.jpg',
-        url: ''
-      }]
-    },{
-      name: 'baby',
-      title: '母婴',
-      url: '',
-      id: '006',
-      children:[{
-        name: 'dress',
-        title: '童装',
-        pic:'http://img0.imgtn.bdimg.com/it/u=3609377622,3839737162&fm=27&gp=0.jpg',
-        url: ''
-      },{
-        name: 'dress',
-        title: '童鞋',
-        pic:'http://img0.imgtn.bdimg.com/it/u=3609377622,3839737162&fm=27&gp=0.jpg',
-        url: ''
-      }]
-    },{
-      name: 'baby',
-      title: '母婴',
-      url: '',
-      id: '007',
-      children:[{
-        name: 'dress',
-        title: '童装',
-        pic:'http://img0.imgtn.bdimg.com/it/u=3609377622,3839737162&fm=27&gp=0.jpg',
-        url: ''
-      },{
-        name: 'dress',
-        title: '童鞋',
-        pic:'http://img0.imgtn.bdimg.com/it/u=3609377622,3839737162&fm=27&gp=0.jpg',
-        url: ''
-      }]
-    }]
+    const {list} = this.props
     const {active} = this.state
 
     return (
@@ -164,13 +74,13 @@ class ShopTab extends Component{
                   <a 
                     key={item.id}
                     className={ active === index ? 'tab_item active' : 'tab_item' }
-                    onClick = { (e) => this.handleClickTab(e,index) }
+                    onClick = { (e) => this.handleClickTab(e,item,index) }
                   >{item.title}</a>
                 )
               })
             }
         </div>
-        <div className='content' onScroll={(e)=>this.handleConScroll(e)}>
+        <div className='content' ref='content' onScroll={(e)=>this.handleConScroll(e)}>
           <ul>
             {
               list.map((item,index)=>{
@@ -178,7 +88,6 @@ class ShopTab extends Component{
                   <li 
                     key={item.id}
                     className={ active === index ? 'tab_item active' : 'tab_item' }
-                    onClick = { (e) => this.handleClickTab(e,index) }
                     id = {item.id}
                   >
                     <div className='pro_type'>
@@ -190,7 +99,7 @@ class ShopTab extends Component{
                         item.children.map((item1,index1)=>{
                           return (
                             <div key={index1} className='pro_item'>
-                              <img className='pro_pic' src={item1.pic} />
+                              <img className='pro_pic' alt={item1.title} src={item1.pic} />
                               <span className='pro_tilte'>{item1.title}</span>
                             </div>
                           )

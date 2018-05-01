@@ -1,0 +1,43 @@
+@import '../assets/css/reset.less';
+
+.good_list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+}
+.good_box{
+  width: 49%;
+  font-size: 12px;
+  background: #fff;
+  margin-bottom: 8px;
+  .good_img{
+    width: 100%;
+    height: auto;
+    max-height: 160px;
+  }
+  p{
+    margin: 0;
+    line-height: 20px;
+    max-height: 40px;
+    overflow: hidden;
+    padding: 0 5px;
+  }
+  .title{
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-line-clamp:2; // (两行文字)
+    -webkit-box-orient:vertical;
+  }
+  .price{
+    position: relative;
+    font-size: 16px;
+    color: @primary;
+    line-height: 30px;
+    &:before{
+      position: relative;
+      content: '￥';
+      font-size: 12px;
+      transform: scale(0.5);
+    }
+  }
+}

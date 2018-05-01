@@ -4,18 +4,8 @@ import { List } from 'antd-mobile';
 import './my.less'
 
 const Item = List.Item;
-const Brief = Item.Brief;
 
 class News extends Component{
-  constructor(){
-    super()
-  }
-  componentWillMount(){
-    // console.log(this.props)
-  }
-  goPage() {
-    this.props.history.push('/about')
-  }
   render() {
     const img = require('../assets/img/person.GIF'),
           name = 'Dale清风';
@@ -56,7 +46,7 @@ class News extends Component{
       <div className='view_my'>
         <div className='bg'>
           <div className='bg_inner'>
-            <img className='pic' src={img} />
+            <img className='pic' alt='my' src={img} />
             <span className='name'>{name}</span>
           </div>
         </div>
@@ -67,6 +57,7 @@ class News extends Component{
                 <Item
                   arrow="horizontal"
                   thumb={item.thumb}
+                  key={index}
                   multipleLine
                   onClick={() => {}}
                 >
@@ -83,6 +74,7 @@ class News extends Component{
                 <Item
                   arrow="horizontal"
                   thumb={item.thumb}
+                  key={index}
                   multipleLine
                   onClick={() => {}}
                 >

@@ -7,6 +7,7 @@ import App from './router';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom'
 // import 'antd-mobile/dist/antd-mobile.css'; 
+import './assets/css/antd_reset.less'
 
 ReactDOM.render(
   <BrowserRouter>

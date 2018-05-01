@@ -73,7 +73,7 @@ class News extends Component{
                   onTouchMove={(event)=> this.touchMove(event,index) } 
                   onTouchEnd={(event)=> this.touchEnd(event,index) } 
                   key={item.id}>
-                  <img src={item.pic} />
+                  <img src={item.pic} alt='item.title' />
                 </li>
               )
             })
@@ -83,7 +83,7 @@ class News extends Component{
           {
             list.map((item,index)=>{
               return (
-                <a href='javascript:;' className={ active === index ? 'page_item active' : 'page_item' }></a>
+                <a href='javascript:;' key={index} className={ active === index ? 'page_item active' : 'page_item' }></a>
               )
             })
           }
