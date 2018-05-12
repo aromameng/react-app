@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'antd-mobile'
 import './good.less';
 import Good from './Good'
 

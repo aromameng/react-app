@@ -1,7 +1,7 @@
 // import './assets/js/antm-viewport.min'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './assets/css/reset.less'
+import './assets/css/base.less'
 import './index.css';
 import App from './router';
 import registerServiceWorker from './registerServiceWorker';

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 // import './game.less'
 import Footer from '../components/Footer'
+import Header from '../components/Header'
 import ShopTab from '../components/ShopTab'
-import './shop.less'
+import './common.less'
 
 const list =[{
   name: 'dress',
@@ -141,6 +142,7 @@ class News extends Component{
   render() {
     return (
       <div className='view_classify'>
+        <Header {...this.props} back={false} title='分类' />
         <ShopTab list={list} />   
         <Footer {...this.props} />    
       </div>

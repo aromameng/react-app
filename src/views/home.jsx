@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-// import '../App.css';
-// import logo from '../logo.svg';
-import { Button } from 'antd-mobile';
-import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
 import Swiper from '../components/Swiper'
+import Header from '../components/Header'
 
 import HomeNav from '../components/HomeNav'
 import GoodList from '../components/GoodList'
 
-// import axios from 'axios'
 import goods from '../data/shop'
+
+import './common.less'
 
 
 const list =[{
@@ -31,15 +29,10 @@ const list =[{
 }]
 
 class Home extends Component{
-  componentWillMount(){
-    // console.log(this.props)
-    // axios.get('../data/shop.json').then((res)=>{
-    //   console.log(res)
-    // })
-  }
   render() {
     return (
       <div className='view_home'>
+        <Header {...this.props} back={false} title='首页' />
         <Swiper list={list} />
         <HomeNav />
         <GoodList list={goods} />
