@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Footer from '../components/Footer'
+import Header from '../components/Header'
 import { List } from 'antd-mobile';
-import './my.less'
+import './common.less'
 
 const Item = List.Item;
 
@@ -44,6 +45,7 @@ class News extends Component{
 
     return (
       <div className='view_my'>
+        <Header {...this.props} back={false} title='我的' />
         <div className='bg'>
           <div className='bg_inner'>
             <img className='pic' alt='my' src={img} />

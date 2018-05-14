@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'antd-mobile'
-import './shop.less';
+import './common.less';
 import Footer from '../components/Footer'
 
 class ShopList extends Component{
