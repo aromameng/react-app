@@ -7,8 +7,8 @@ import HomeNav from '../components/HomeNav'
 import GoodList from '../components/GoodList'
 
 import goods from '../data/shop'
-
 import './common.less'
+
 
 
 const list =[{
@@ -29,13 +29,21 @@ const list =[{
 }]
 
 class Home extends Component{
+
+  constructor(props){
+    super(props)
+    this.state ={
+      list:[]
+    }
+  }
+
   render() {
     return (
       <div className='view_home'>
-        <Header {...this.props} back={false} title='首页' />
+        <Header {...this.props.route} />
         <Swiper list={list} />
         <HomeNav />
-        <GoodList list={goods} />
+        <GoodList list={goods} {...this.props} />
         <Footer {...this.props} />
       </div>
     )

@@ -33,8 +33,10 @@
     "jest": "20.0.4",
     "less": "^3.0.2",
     "less-loader": "^4.1.0",
+    "lodash": "^4.17.10",
     "mobx": "^4.2.0",
     "mobx-react": "^5.0.0",
+    "mockjs": "^1.0.1-beta3",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
@@ -102,5 +104,14 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage": "https://aromameng.github.com/react-app"
+  "homepage": "https://aromameng.github.com/react-app",
+  "proxy": {
+    "/api/v1":{
+      "target": "https://www.easy-mock.com/mock/5afaaac82c5ab01b0cbf4490",
+      "changeOrigin": true,
+      "pathRewrite":{
+        "^/api/v1": ""    
+      }
+    }
+  }
 }

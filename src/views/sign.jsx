@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../components/Header'
 
 class Sign extends Component{
   componentWillMount(){
@@ -6,7 +7,8 @@ class Sign extends Component{
   }
   render() {
     return (
-      <div>
+      <div className='view_sign'>
+        <Header {...this.props.route} />
         签到有礼
       </div>
     )

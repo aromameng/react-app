@@ -16,7 +16,7 @@ class ShopCart extends Component{
     if(!list.length){
       return (
         <div>
-          <Header {...this.props} back={false} title='购物车' />
+          <Header {...this.props.route} />
           <Empty />
           <Footer {...this.props} />
         </div>      

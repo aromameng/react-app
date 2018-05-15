@@ -83,7 +83,7 @@ class News extends Component{
           {
             list.map((item,index)=>{
               return (
-                <a href='javascript:;' key={index} className={ active === index ? 'page_item active' : 'page_item' }></a>
+                <em key={index} className={ active === index ? 'page_item active' : 'page_item' }></em>
               )
             })
           }

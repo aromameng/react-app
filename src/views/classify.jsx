@@ -142,7 +142,7 @@ class News extends Component{
   render() {
     return (
       <div className='view_classify'>
-        <Header {...this.props} back={false} title='分类' />
+        <Header {...this.props.route} />
         <ShopTab list={list} />   
         <Footer {...this.props} />    
       </div>

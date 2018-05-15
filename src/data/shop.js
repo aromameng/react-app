@@ -30,7 +30,7 @@ export default [{
   "id":"p005",
   "title": "[为你推荐]博古架多宝阁小号桌面中式明清仿古实木茶壶古董置物摆架红木家具",
   "price": "24",
-  "img":"https://img.alicdn.com/bao/uploaded/i3/168050385/TB2rkr5lM0kpuFjSspdXXX4YXXa_!!168050385.jpg_300x300q85s150.jpg_.webp",
+  "img":"",
   "summary":"3333333333",
   "stock":"100"
 },{

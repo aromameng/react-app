@@ -6,6 +6,7 @@ import ShopCart from './views/shopCart'
 import My from './views/my'
 import Classify from './views/classify'
 import Sign from './views/sign'
+import GoodDetail from './views/goodDetail'
 
 import router from './utils/route'
 
@@ -20,6 +21,7 @@ class App extends Component {
               <Route path="/classify" render={ (props)=> <Classify route={router['classify']} {...props} /> } ></Route>
               <Route path="/shopcart" render={ (props)=> <ShopCart route={router['shopcart']} {...props} /> }></Route>             
               <Route path="/sign"  render={ (props)=> <Sign route={router['sign']} {...props} /> } ></Route>
+              <Route path="/good-detail/:id"  render={ (props)=> <GoodDetail route={router['goodDetail']} {...props} /> } ></Route>
             </Switch>       
         </div>        
     );

@@ -45,7 +45,7 @@ class News extends Component{
 
     return (
       <div className='view_my'>
-        <Header {...this.props} back={false} title='我的' />
+        <Header {...this.props.route} />
         <div className='bg'>
           <div className='bg_inner'>
             <img className='pic' alt='my' src={img} />
