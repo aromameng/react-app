@@ -20,7 +20,6 @@ class Good extends Component{
       _width: 0,
       _height: 0
     }
-    this.handleDetail = this.handleDetail.bind(this)
   }
   
   componentDidMount(){
@@ -31,15 +30,11 @@ class Good extends Component{
     })
   }
 
-  handleDetail(){
-    this.props.history.push(`good-detail/${this.props.info.id}`)
-  }
-
   render(){
     const info = this.props.info
     const {_width,_height} = this.state
     return (
-      <div className='good_box' ref='box' onClick={this.handleDetail}>
+      <div className='good_box' ref='box' onClick={()=>this.props.handleDetail(info)}>
         <img className='img good_img' style={{width:_width,height:_height}} alt={info.title} src={info.img || loading} />
         <p className='title'>{info.title}</p>
         <p className='price'>{info.price}</p>    

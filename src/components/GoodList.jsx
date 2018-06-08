@@ -8,7 +8,7 @@ const GoodList = (props) =>{
         {
           props.list.map((item,index)=>{
             return (
-              <Good key={item.id} info={item} {...props} />
+              <Good key={item.id} handleDetail={props.handleDetail} info={item} {...props} />
             )
           })
         }
