@@ -2,19 +2,28 @@ import React, { Component } from 'react';
 // import { Icon } from 'antd-mobile';
 import './Swiper.less'
 
-class News extends Component{
+class Swiper extends Component{
   constructor(props){
     super()
     this.state ={
       active:0,
-      tranX: 0
+      tranX: 0,
+      len: 0
     }
     this.start = {
       x: 0,
       tranX: 0
     }
     this.dW = document.body.clientWidth
-    this.len = props.list.length
+    // this.len = props.list.length
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(this.props.list.length){
+      this.setState({
+        len:this.props.list.length
+      })
+    }
   }
 
   touchStart(event,index) {
@@ -25,7 +34,7 @@ class News extends Component{
   touchMove(event) {
     let distance = event.touches[0].pageX - this.start.x,
         direction = distance > 0;
-    if((!this.state.active && direction) || (this.state.active>=(this.len-1) && !direction)){
+    if((!this.state.active && direction) || (this.state.active>=(this.state.len-1) && !direction)){
         // 第一张和最后一张的滑动阻力变大
         distance=distance/3;
     }
@@ -40,7 +49,7 @@ class News extends Component{
         active = this.state.active,
         tranX = this.state.tranX;
     if(Math.abs(distance)>50){
-        if((!active && direction) || (active>=(this.len-1) && !direction)){
+        if((!active && direction) || (active>=(this.state.len-1) && !direction)){
            tranX=this.start.tranX;
            return this.setState({
             active : active,
@@ -93,4 +102,4 @@ class News extends Component{
   }
 }
 
-export default News;
+export default Swiper;

@@ -1,31 +1,50 @@
 /*
   触发reducers
 */
-const goodInfo ={
-  name:'hello',
-  content:'f看的积分卡积分是减肥'
+import {storage} from '../utils'
+import {request_get} from '../utils/request'
+import api from '../utils/api'
+
+const userInfo ={
+  name:'Dale清风',
+  id:'u001',
+  img:require('../assets/img/person.GIF')
 }
 
 // 同步
-export const getGoodInfo = ()=>{
+export const getUserInfo = ()=>{
+  storage.set('userInfo',userInfo)
   return {
-    type: 'GET_GOOD_INFO',
+    type: 'GET_USER',
     payload:{
-      goodInfo:goodInfo
+      userInfo:userInfo
     }
   }
 }
 
 // 异步，需要引入redux-thunk 库
-export const test = ()=>{
-  return dispatch =>{
-    setTimeout(()=>{
+export const getGoodList = ()=>{
+  return dispatch => {
+    request_get(api.getGoodsList).then((res)=>{
       dispatch({
-        type: 'GET_GOOD_INFO',
-        payload:{
-          goodInfo:goodInfo
-        }
+        type: 'GET_GOOD_LIST',
+        payload: res
       })
-    },2000)
-  } 
+    }).catch((error)=>{
+      console.log(error)
+    })
+  }
+}
+
+export const getBannerList = ()=>{
+  return dispatch => {
+    request_get(api.getBanner).then((res)=>{
+      dispatch({
+        type: 'GET_BANNER',
+        payload: res
+      })
+    }).catch((error)=>{
+      console.log(error)
+    })
+  }
 }

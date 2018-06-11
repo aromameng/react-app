@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import { List } from 'antd-mobile';
+import {getUserInfo} from '../actions/index'
 import './common.less'
 
 const Item = List.Item;
 
-class News extends Component{
-  render() {
-    const img = require('../assets/img/person.GIF'),
-          name = 'Dale清风';
+class My extends Component{
+  componentWillMount(){
+    this.props.getUserInfo()
+  }
 
+  render() {
+    const {userInfo} = this.props
     const list = [{
       title:'全部订单',
       link: '',
@@ -48,8 +52,8 @@ class News extends Component{
         <Header {...this.props.route} />
         <div className='bg'>
           <div className='bg_inner'>
-            <img className='pic' alt='my' src={img} />
-            <span className='name'>{name}</span>
+            <img className='pic' alt='my' src={userInfo.img} />
+            <span className='name'>{userInfo.name}</span>
           </div>
         </div>
         <List className="my-list">              
@@ -92,4 +96,16 @@ class News extends Component{
   }
 }
 
-export default News;
+function mapStateToProps(state) {
+  return {
+      userInfo:state.index.get('userInfo')
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+      getUserInfo:() => dispatch(getUserInfo())
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(My);

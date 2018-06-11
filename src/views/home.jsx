@@ -6,28 +6,10 @@ import Header from '../components/Header'
 
 import HomeNav from '../components/HomeNav'
 import GoodList from '../components/GoodList'
-import {test} from '../actions/index'
+import {getGoodList,getBannerList} from '../actions/index'
+import {Icon} from 'antd-mobile'
 
-
-import goods from '../data/shop'
 import './common.less'
-
-const list =[{
-  title:'美丽',
-  id:1,
-  pic: 'http://img3.imgtn.bdimg.com/it/u=859170095,620911882&fm=27&gp=0.jpg',
-  url:'/sign'
-},{
-  title:'美丽2',
-  id:2,
-  pic: 'http://img2.imgtn.bdimg.com/it/u=2111979637,116752699&fm=27&gp=0.jpg',
-  url:'/sign'
-},{
-  title:'美丽2',
-  id:3,
-  pic: 'http://img5.imgtn.bdimg.com/it/u=3180694005,1343380476&fm=27&gp=0.jpg',
-  url:'/sign'
-}]
 
 class Home extends Component{
   constructor(props){
@@ -39,8 +21,8 @@ class Home extends Component{
   }
 
   componentWillMount(){
-    this.props.getGoodInfo();
-    
+    this.props.getGoodList()
+    this.props.getBannerList()
   }
 
   handleDetail(info){
@@ -48,12 +30,19 @@ class Home extends Component{
   }
 
   render() {
+    const goods = this.props.goodList;
+    const bannerList = this.props.bannerList;
     return (
       <div className='view_home'>
         <Header {...this.props.route} />
-        <Swiper list={list} />
+        <Swiper list={bannerList} />
         <HomeNav />
-        <GoodList list={goods} handleDetail={this.handleDetail} {...this.props} />
+        {
+          goods.length>0 ? <GoodList list={goods} handleDetail={this.handleDetail} {...this.props} /> :
+          (<div className='c_load'>
+              <Icon type="loading" size='sm' />
+          </div>)
+        } 
         <Footer {...this.props} />
       </div>
     )
@@ -62,14 +51,16 @@ class Home extends Component{
 
 function mapStateToProps(state) {
   return {
-      goodInfo:state.goodInfo
+      goodList:state.index.get('goodList'),
+      bannerList: state.test.bannerList
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-      getGoodInfo:() => dispatch(test())
+    getGoodList:() => dispatch(getGoodList()),
+    getBannerList: () => dispatch(getBannerList())
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps,mapDispatchToProps)(Home);

@@ -35,3 +35,10 @@ ul,li{
   overflow-x: hidden;
   overflow-y: auto;
 }
+.c_load{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
